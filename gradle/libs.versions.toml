@@ -13,6 +13,7 @@ activity-compose = "1.8.1"
 sqldelight = "1.5.5"
 moko = "0.16.1"
 datetime = "0.4.0"
+material3-android = "1.2.0-alpha12"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -42,6 +43,7 @@ moko-mvvm-core = { group = "dev.icerock.moko", name = "mvvm-core", version.ref =
 moko-mvvm-compose = { group = "dev.icerock.moko", name = "mvvm-compose", version.ref = "moko" }
 moko-mvvm-flow = { group = "dev.icerock.moko", name = "mvvm-flow", version.ref = "moko" }
 moko-mvvm-flow-compose = { group = "dev.icerock.moko", name = "mvvm-flow-compose", version.ref = "moko" }
+androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3-android" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }

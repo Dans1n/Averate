@@ -40,6 +40,7 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material)
+                implementation(compose.material3)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
@@ -99,6 +100,8 @@ android {
 
 dependencies {
     implementation(libs.core)
+    implementation(libs.compose.material3)
+    implementation(libs.androidx.material3.android)
     commonMainApi(libs.moko.mvvm.core)
     commonMainApi(libs.moko.mvvm.compose)
     commonMainApi(libs.moko.mvvm.flow)
