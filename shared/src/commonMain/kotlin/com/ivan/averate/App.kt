@@ -4,33 +4,48 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.ivan.averate.core.presentation.AverateTheme
+import com.ivan.averate.weeks.presentation.WeeksListScreen
+import com.ivan.averate.weeks.presentation.WeeksListViewModel
+import dev.icerock.moko.mvvm.compose.getViewModel
+import dev.icerock.moko.mvvm.compose.viewModelFactory
 
 @Composable
-fun App() {
-
-    var count by remember {
-        mutableStateOf(0)
-    }
-
-    MaterialTheme.colors.error
-    Box(
-        Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+fun App(
+    darkTheme: Boolean,
+    dynamicColor: Boolean
+) {
+    AverateTheme(
+        darkTheme = darkTheme,
+        dynamicColor = dynamicColor
     ) {
-        Button(
-            onClick = {
-                count++
+        val viewModel = getViewModel(
+            key = "weeks-list-screen",
+            factory = viewModelFactory {
+                WeeksListViewModel()
             }
+        )
+        val state by viewModel.state.collectAsState()
+
+        Surface(
+            modifier = Modifier
+                .fillMaxSize(),
+            color = MaterialTheme.colors.background
         ) {
-            Text("Count $count")
+            WeeksListScreen(
+                state = state,
+                onEvent = viewModel::onEvent
+            )
         }
     }
 }

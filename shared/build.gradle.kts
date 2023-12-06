@@ -12,7 +12,7 @@ kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "17"
             }
         }
     }
@@ -96,12 +96,17 @@ android {
     defaultConfig {
         minSdk = 24
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    buildToolsVersion = "34.0.0"
 }
 
 dependencies {
     implementation(libs.core)
-    implementation(libs.compose.material3)
-    implementation(libs.androidx.material3.android)
+    //implementation(libs.compose.material3)
+    //implementation(libs.androidx.material3.android)
     commonMainApi(libs.moko.mvvm.core)
     commonMainApi(libs.moko.mvvm.compose)
     commonMainApi(libs.moko.mvvm.flow)

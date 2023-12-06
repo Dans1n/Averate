@@ -4,9 +4,9 @@ data class Week(
     val weekDateStart: String,
     val weekDateEnd: String,
     val weightValues: List<WeightValues>,
-    val averageWeight: Float,
-    val totalCalories: Long,
-    val description: String
+    val averageWeight: Float? = null,
+    val totalCalories: Long? = null,
+    val description: String = ""
 )
 
 data class WeightValues(
