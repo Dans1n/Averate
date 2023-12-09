@@ -1,9 +1,10 @@
 package com.ivan.averate.weeks.presentation.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -11,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ivan.averate.weeks.domain.Week
 
@@ -22,6 +25,7 @@ fun WeekListItem(
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         repeat(7){
             DailyWeight()
@@ -31,13 +35,24 @@ fun WeekListItem(
 
 @Composable
 fun DailyWeight(){
-    Box(
+    Column(
         modifier = Modifier
-            .size(20.dp)
             .clip(RoundedCornerShape(9.dp))
-            .border(1.dp, MaterialTheme.colors.primary),
-        contentAlignment = Alignment.Center
+            .background(MaterialTheme.colors.onPrimary)
+            .border(1.dp, MaterialTheme.colors.onSurface, shape = RoundedCornerShape(9.dp)),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("99")
+        Text(
+            text = "72,5",
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold
+        )
+
+        Text(
+            text = "2200 ккал",
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold
+        )
     }
 }

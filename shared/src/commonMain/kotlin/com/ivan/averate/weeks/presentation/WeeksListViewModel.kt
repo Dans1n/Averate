@@ -4,17 +4,26 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.ivan.averate.weeks.domain.Week
-import com.ivan.averate.weeks.domain.WeightValues
+import com.ivan.averate.weeks.domain.WeeksDataSource
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 
-class WeeksListViewModel: ViewModel() {
+class WeeksListViewModel(
+    private val weeksDataSource: WeeksDataSource
+): ViewModel() {
 
-    private val _state = MutableStateFlow(WeeksListState(
-        weeks = weeks
-    ))
-    val state = _state.asStateFlow()
+    private val _state = MutableStateFlow(WeeksListState())
+    val state = combine(
+        _state,
+        weeksDataSource.getWeeks()
+    ) { state, weeks ->
+        state.copy(
+            weeks = weeks
+        )
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000L), WeeksListState())
 
     var newWeek: Week? by mutableStateOf(null)
         private set
@@ -22,12 +31,4 @@ class WeeksListViewModel: ViewModel() {
     fun onEvent(event: WeeksListEvent){
 
     }
-}
-
-private val weeks = (1..10).map {
-    Week(
-        weekDateStart = "1",
-        weekDateEnd = "2",
-        weightValues = listOf(WeightValues(1, 75f, 2000L), WeightValues(2, 75f, 2000L)),
-    )
 }

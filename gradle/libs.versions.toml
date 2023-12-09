@@ -10,7 +10,7 @@ material = "1.10.0"
 material3 = "1.1.2"
 compose = "1.5.4"
 activity-compose = "1.8.1"
-sqldelight = "1.5.5"
+sqldelight = "2.0.1"
 moko = "0.16.1"
 datetime = "0.4.0"
 material3-android = "1.2.0-alpha12"
@@ -34,10 +34,10 @@ compose-material = { group = "androidx.compose.material", name = "material", ver
 compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 
-sqldelight-runtime = { group = "com.squareup.sqldelight", name = "runtime", version.ref = "sqldelight" }
-sqldelight-coroutines = { group = "com.squareup.sqldelight", name = "coroutines-extensions", version.ref = "sqldelight" }
-android-driver = { group = "com.squareup.sqldelight", name = "android-driver", version.ref = "sqldelight" }
-ios-driver = { group = "com.squareup.sqldelight", name = "native-driver", version.ref = "sqldelight" }
+sqldelight-runtime = { group = "app.cash.sqldelight", name = "runtime", version.ref = "sqldelight" }
+sqldelight-coroutines = { group = "app.cash.sqldelight", name = "coroutines-extensions", version.ref = "sqldelight" }
+android-driver = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqldelight" }
+ios-driver = { group = "app.cash.sqldelight", name = "native-driver", version.ref = "sqldelight" }
 
 moko-mvvm-core = { group = "dev.icerock.moko", name = "mvvm-core", version.ref = "moko" }
 moko-mvvm-compose = { group = "dev.icerock.moko", name = "mvvm-compose", version.ref = "moko" }

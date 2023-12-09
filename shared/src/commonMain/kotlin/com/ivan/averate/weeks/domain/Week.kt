@@ -1,10 +1,11 @@
 package com.ivan.averate.weeks.domain
 
 data class Week(
+    val id: Long,
     val weekDateStart: String,
     val weekDateEnd: String,
-    val weightValues: List<WeightValues>,
-    val averageWeight: Float? = null,
+    val weightValues: List<String>,
+    val averageWeight: Double? = null,
     val totalCalories: Long? = null,
     val description: String = ""
 )

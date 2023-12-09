@@ -2,7 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("org.jetbrains.compose")
-    id("com.squareup.sqldelight")
+    id("app.cash.sqldelight")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -101,6 +101,14 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     buildToolsVersion = "34.0.0"
+}
+
+sqldelight {
+    databases {
+        create("AverateDatabase") {
+            packageName.set("com.ivan.averate.database")
+        }
+    }
 }
 
 dependencies {
